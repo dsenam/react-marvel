@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, ListChars } from './styles';
+import api from '../../services/api';
 
 function Main() {
+  const [chars, setChars] = useState([]);
+
+  async function loadData() {
+    try {
+      const response = await api.get(
+        `https://gateway.marvel.com:443/v1/public/characters?limit=10&apikey=f0b2694de242923d1277ccb44958db7c`
+      );
+      setChars(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
     <>
       <Container>
@@ -9,16 +27,17 @@ function Main() {
           <h1>Personagens</h1>
 
           <ul>
-            <li>
-              <img
-                src="https://scontent.fcgh3-1.fna.fbcdn.net/v/l/t1.0-9/13516570_1134741859901042_1443622375463448550_n.jpg?_nc_cat=111&ccb=2&_nc_sid=09cbfe&_nc_ohc=Y4XzBG0Epr8AX9RmCGi&_nc_ht=scontent.fcgh3-1.fna&oh=b10cdb01867d9cf370db104ff5067b0f&oe=5FF866C4"
-                alt="Imagem"
-              />
-              <article>
-                <p>Douglas Sena</p>
-                <span>Super Herói</span>
-              </article>
-            </li>
+            {chars.results.map((char) => (
+              <li>
+                <img
+                  src={`${char.thumbnail.path}/portrait_xlarge.${char.thumbnail.extension}`}
+                  alt="Imagem"
+                />
+                <article>
+                  <p>{char.name}</p>
+                </article>
+              </li>
+            ))}
           </ul>
         </ListChars>
       </Container>

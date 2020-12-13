@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
 
   h1 {
     margin-top: 15px;
@@ -25,6 +29,7 @@ export const Container = styled.div`
     margin: 30px;
     width: 200px;
     height: 345px;
+
     img {
       width: 100%;
       height: 300px;
@@ -63,5 +68,20 @@ export const Header = styled.header`
         color: #dcdcdc;
       }
     }
+  }
+`;
+
+export const Actions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+  button {
+    background: none;
+  }
+
+  p {
+    font-size: 16px;
   }
 `;

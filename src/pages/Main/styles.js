@@ -41,8 +41,15 @@ export const Loading = styled.div`
     margin-right: 10px;
   }
 
+  @keyframes gira {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   svg {
-    transform: rotate(45deg);
+    animation: gira 8s linear infinite;
+    transform-origin: 43px 40px;
     color: white;
     font-size: 40px;
   }

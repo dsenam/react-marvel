@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-
-import { Container, Header } from './styles';
+import { IoCaretForward, IoCaretBack } from 'react-icons/io5';
+import { Container, Header, Actions } from './styles';
 import logo from '../../assets/logo.png';
 
-function ListChars({ chars }) {
+function ListChars({ chars, prevPage, nextPage, page }) {
   const [search, setSearch] = useState('');
 
   // Filtrar resultados
@@ -32,6 +32,16 @@ function ListChars({ chars }) {
         </Header>
 
         <h1>Personagens</h1>
+
+        <Actions>
+          <button type="button" onClick={prevPage}>
+            <IoCaretBack size={32} color="red" />
+          </button>
+          <p>Página {page + 1}</p>
+          <button type="button" onClick={nextPage}>
+            <IoCaretForward size={32} color="red" />
+          </button>
+        </Actions>
 
         <ul>
           {filteredChars.map((char) => (

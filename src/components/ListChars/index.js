@@ -17,7 +17,7 @@ function ListChars({ chars, prevPage, nextPage, page, handleChange, search }) {
             onChange={handleChange}
             value={search}
             // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus="true"
+            autoFocus
           />
         </Form>
 
@@ -33,7 +33,7 @@ function ListChars({ chars, prevPage, nextPage, page, handleChange, search }) {
 
         <ul>
           {chars.results.map((char) => (
-            <li key={char.name}>
+            <li key={char.id}>
               <img
                 src={`${char.thumbnail.path}/portrait_xlarge.${char.thumbnail.extension}`}
                 alt="Imagem"

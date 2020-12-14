@@ -23,7 +23,6 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    flex-wrap: wrap;
     border-radius: 5px;
     border: 3px solid black;
     margin: 30px;
@@ -39,34 +38,34 @@ export const Container = styled.div`
       font-weight: bold;
       margin-top: 8px;
     }
+
+    button {
+      background-color: #ed3020;
+      color: #fff;
+      padding: 8px;
+      margin: 8px 0px;
+      border-radius: 5px;
+
+      :hover {
+        background-color: #990000;
+      }
+    }
   }
 `;
 
-export const Header = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 200px;
-  background-color: #ed3020;
-  padding: 20px;
+export const Form = styled.form`
+  margin: 15px 0px;
 
-  img {
-    width: 150px;
-    height: 60px;
-  }
+  input {
+    height: 40px;
+    width: 350px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ed3020;
 
-  form {
-    input {
-      height: 40px;
-      width: 350px;
-      border-radius: 5px;
-      padding: 10px;
-
-      ::placeholder {
-        color: #dcdcdc;
-      }
+    ::placeholder {
+      font-size: 18px;
+      color: #dcdcdc;
     }
   }
 `;

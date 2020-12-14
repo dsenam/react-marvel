@@ -24,6 +24,7 @@ function Main() {
     }
   }
 
+  // Requisição a API
   useEffect(() => {
     loadData();
   }, [page]);

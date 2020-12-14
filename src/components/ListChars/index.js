@@ -1,21 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { IoCaretForward, IoCaretBack } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { Container, Actions, Form } from './styles';
 
-function ListChars({ chars, prevPage, nextPage, page }) {
-  const [search, setSearch] = useState('');
-
-  // Filtrar resultados
-  const filteredChars = chars.results.filter((char) =>
-    char.name.toLowerCase().includes(search.toLocaleLowerCase())
-  );
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
-
+function ListChars({ chars, prevPage, nextPage, page, handleChange, search }) {
   return (
     <>
       <Container>
@@ -26,6 +15,9 @@ function ListChars({ chars, prevPage, nextPage, page }) {
             type="text"
             placeholder="Digite um herói"
             onChange={handleChange}
+            value={search}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus="true"
           />
         </Form>
 
@@ -40,8 +32,8 @@ function ListChars({ chars, prevPage, nextPage, page }) {
         </Actions>
 
         <ul>
-          {filteredChars.map((char) => (
-            <li key={char.id}>
+          {chars.results.map((char) => (
+            <li key={char.name}>
               <img
                 src={`${char.thumbnail.path}/portrait_xlarge.${char.thumbnail.extension}`}
                 alt="Imagem"

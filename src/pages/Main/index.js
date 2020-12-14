@@ -14,19 +14,19 @@ function Main() {
 
   async function loadData() {
     try {
-      setLoading(true);
       if (search === '') {
+        setLoading(true);
         const response = await api.get(
           `v1/public/characters?&limit=10&offset=${page}1&apikey=f0b2694de242923d1277ccb44958db7c`
         );
         await setChars(response.data.data);
+        setLoading(false);
       } else {
         const response = await api.get(
           `/v1/public/characters?nameStartsWith=${search}&apikey=f0b2694de242923d1277ccb44958db7c`
         );
         await setChars(response.data.data);
       }
-      setLoading(false);
     } catch (error) {
       toast.error('Falha ao consultar dados');
     }
@@ -54,7 +54,6 @@ function Main() {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    console.log(search);
   };
 
   // Loading

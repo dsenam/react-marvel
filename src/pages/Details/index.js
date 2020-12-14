@@ -22,6 +22,7 @@ function Details({ match }) {
         await setChar(response.data.data.results);
         setLoading(false);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error);
       }
     }
